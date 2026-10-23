@@ -1,3 +1,23 @@
+#include <stdio.h>
+
+void brackets(int n, int open, int close, char arr[]) {
+    if (open == n && close == n) {
+        arr[2 * n] = '\0';
+        printf("%s\n", arr);
+        return;
+    }
+
+    if (open < n) {
+        arr[open + close] = '(';
+        brackets(n, open + 1, close, arr);
+    }
+
+    if (close < open) {
+        arr[open + close] = ')';
+        brackets(n, open, close + 1, arr);
+    }
+}
+
 int main() {
     int n;
     char arr[21];
